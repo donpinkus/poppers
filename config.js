@@ -2,7 +2,7 @@ const config = {};
 
 config.mongoDBURL =
   process.env.NODE_ENV === "production"
-    ? "mongodb://<dbuser>:<dbpassword>@ds245337.mlab.com:45337/heroku_795jlplm"
+    ? "mongodb://heroku_795jlplm:foobarbaz1@ds245337.mlab.com:45337/heroku_795jlplm"
     : "mongodb://localhost:27017";
 
 config.mongoDBName =
