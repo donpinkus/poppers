@@ -9,7 +9,7 @@ class Home extends Component {
       <div>
         <div className="Header">
           <h1>Poppers</h1>
-          <h2>Show us which things are currently starting to pop</h2>
+          <h2>Show us which things are currently starting to pop or not show us in order of recency coins that have popped</h2>
         </div>
 
         <Footer />
