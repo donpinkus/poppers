@@ -12,30 +12,14 @@ app.use(express.static("public"));
 app.engine("html", require("ejs").renderFile);
 
 app.get("/api/test", (req, res) => {
-  res.json({ test: "hello world, this is the api." });
-});
-
-app.get("/api/v1/sub-systems", (req, res) => {
   MongoClient.connect(mongoDBURL, (err, client) => {
     if (err) throw err;
     console.log("Connected to MongoDB at: ", mongoDBURL);
-    const db = client.db(mongoDBName);
-    const collection = db.collection("subSystems");
 
-    collection
-      .aggregate([
-        { $sort: { date: -1 } },
-        {
-          $group: {
-            _id: { subSystem: "$subSystem", currency: "$currency" },
-            data: { $first: "$data" }
-          }
-        }
-      ])
-      .toArray()
-      .then(results => {
-        return res.json({ results: results });
-      });
+    const db = client.db(mongoDBName);
+    const collection = db.collection("foobar");
+
+    res.json({ test: "hello world, this is the api." });
   });
 });
 
