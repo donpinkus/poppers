@@ -23,6 +23,22 @@ app.get("/api/test", (req, res) => {
   });
 });
 
+app.get("/api/poppers", (req, res) => {
+  MongoClient.connect(mongoDBURL, (err, client) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB at: ", mongoDBURL);
+    const db = client.db(mongoDBName);
+    const collection = db.collection("historicalData");
+
+    collection
+      .find({})
+      .toArray()
+      .then(results => {
+        return res.json({ results: results });
+      });
+  });
+});
+
 if (process.env.NODE_ENV === "development") {
   console.log("Node server running DEVELOPMENT");
   // Actual webpack library
