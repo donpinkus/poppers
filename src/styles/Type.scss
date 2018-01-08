@@ -1,0 +1,40 @@
+$fontSizeSmall: 12px;
+$fontSizeBody: 14px;
+$fontSizeLarge: 17px;
+$fontSizeExtraLarge: 30px;
+
+.Type {
+  &-Size {
+    &-Small {
+      font-size: $fontSizeSmall;
+    }
+    &-Body {
+      font-size: $fontSizeBody;
+      line-height: 21px;
+    }
+    &-Large {
+      font-size: $fontSizeLarge;
+    }
+    &-ExtraLarge {
+      font-size: $fontSizeExtraLarge;
+      @include media-max-600 {
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+  }
+  &-Weight {
+    &-Light {
+      font-weight: 300;
+    }
+    &-Body {
+      font-weight: 400;
+    }
+    &-Medium {
+      font-weight: 600;
+    }
+    &-Heavy {
+      font-weight: 700;
+    }
+  }
+}

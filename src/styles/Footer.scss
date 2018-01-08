@@ -1,0 +1,16 @@
+.Footer {
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  margin: 30px 20px 20px !important;
+  padding-top: 15px;
+  opacity: 0.75;
+  a {
+    text-decoration: none;
+    color: #0448b8;
+  }
+  @include media-max-600 {
+    text-align: left;
+    font-size: 0.8rem;
+  }
+}

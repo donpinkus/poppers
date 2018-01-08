@@ -1,0 +1,11 @@
+@mixin media-max-600 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+.Hidden-600 {
+  @include media-max-600 {
+    display: none !important;
+  }
+}

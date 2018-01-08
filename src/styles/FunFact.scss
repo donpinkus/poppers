@@ -1,0 +1,36 @@
+.FunFact {
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px 20px 12px;
+  margin: 0px 20px 20px;
+  font-size: 13px;
+  @include media-max-600 {
+    margin: 0px 0px 20px;
+  }
+  &-Text {
+    font-size: 14px;
+  }
+  span {
+    font-weight: 600;
+  }
+  &-Currency {
+    text-transform: capitalize;
+  }
+  &-ButtonContainer {
+    margin-top: 7px;
+  }
+  &-Button {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background: #006fdc;
+    border-radius: 3px;
+    padding: 8px 12px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+  &-Button + &-Button {
+    margin-left: 5px;
+  }
+}

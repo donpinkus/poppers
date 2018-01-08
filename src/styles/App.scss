@@ -1,0 +1,47 @@
+@import "./Normalize";
+@import "./Breakpoints.scss";
+
+html {
+  background: #f3f3f3;
+  font-family: "Open Sans";
+  color: #3e3e3e;
+  font-size: 14px;
+  max-width: 100%;
+  overflow-x: hidden;
+  @include media-max-600 {
+    font-size: 15px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  p {
+    line-height: 21px;
+  }
+}
+
+@import "./LoadingIndicator";
+@import "./Type";
+@import "./Flex";
+@import "./Card";
+@import "./Summary";
+@import "./FunFact";
+@import "./Footer";
+@import "./SubSystemsSection";
+@import "./Header";
+
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.Header {
+  padding: 30px 40px 20px;
+  @include media-max-600 {
+    padding: 15px 20px 20px !important;
+    h1 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: -2px;
+    }
+  }
+}

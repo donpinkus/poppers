@@ -1,0 +1,166 @@
+.Summary {
+  display: flex;
+  margin-bottom: 6px;
+  align-items: center;
+  $currencyWidth: 80px;
+  $calcWidth: 60px;
+  $calcWidthMobile: 20px;
+  $barMargin: 15px;
+  @include media-max-600 {
+    margin-bottom: 3px;
+  }
+  &--Highlighted {
+    background: #fff1b6;
+    margin-left: -20px;
+    padding-left: 20px;
+    margin-right: -25px;
+    padding-right: 25px;
+  }
+  &-LabelContainer {
+    margin-left: $currencyWidth;
+    margin-bottom: 4px;
+    align-items: center;
+    @include media-max-600 {
+      margin-bottom: -3px;
+      margin-top: -14px;
+    }
+    &-Calc {
+      width: $calcWidth;
+      text-align: center;
+      opacity: 0.6;
+      @include media-max-600 {
+        display: none;
+        width: $calcWidthMobile;
+        &:nth-child(2) {
+          display: block;
+          opacity: 0;
+        }
+      }
+    }
+    &-Control {
+      &-Container {
+        margin-left: $barMargin;
+        flex: 1;
+        position: relative;
+        height: 22px; // Matches control's height.
+      }
+      &-Outer {
+        cursor: -webkit-grab;
+        position: absolute;
+        top: 1px;
+        transform: translateX(-50%);
+        z-index: 2;
+        height: 100px;
+        @include media-max-600 {
+          top: 0px;
+          height: 67px;
+        }
+      }
+      &-Inner {
+        border: 1px solid #4a4a4a;
+        background: white;
+        border-radius: 3px;
+        padding: 4px 6px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+        @include media-max-600 {
+          border: none;
+          background: transparent;
+        }
+      }
+      &-Instructions {
+        position: absolute;
+        width: 120px;
+        opacity: 0.6;
+        left: 45px;
+        top: -5px;
+        font-size: 16px;
+        cursor: default;
+        @include media-max-600 {
+          top: -3px;
+          left: 35px;
+          border: none;
+          background: transparent;
+          font-size: 14px;
+        }
+        span {
+          margin-left: 3px;
+          font-variant: small-caps;
+        }
+      }
+    }
+  }
+  &-Currency {
+    width: $currencyWidth;
+    font-size: 14px;
+  }
+  &-Calc {
+    text-align: center;
+    width: $calcWidth;
+    font-weight: 300;
+    @include media-max-600 {
+      display: none;
+      width: $calcWidthMobile;
+      &:nth-child(2) {
+        display: block;
+        font-weight: 500;
+      }
+    }
+  }
+  &-Bar {
+    margin-left: $barMargin;
+    flex: 1;
+    display: flex;
+    border: 1px solid #dfdbdb;
+    position: relative;
+    border-radius: 5px;
+    background: white;
+    $valueHeight: 25px;
+    $valueHeightMobile: 15px;
+    &-Value {
+      background: #e34f5e;
+      height: $valueHeight;
+      border-right: 1px solid white;
+      @include media-max-600 {
+        height: $valueHeightMobile;
+      }
+      &--NoBorder {
+        border-right: 0px solid blue !important;
+      }
+    }
+    &-ControlPoint {
+      position: absolute;
+      &-Bar,
+      &-Value {
+        background: #4a4a4a;
+        color: white;
+      }
+      &-Bar {
+        $top: 7px;
+        position: absolute;
+        top: $top * -1;
+        left: -1px;
+        height: $valueHeight + $top * 2;
+        width: 3px;
+        border-radius: 3px;
+        @include media-max-600 {
+          top: -8px;
+          height: 29px;
+          width: 2px;
+        }
+      }
+      &-Value {
+        position: absolute;
+        left: 50%;
+        top: 2px;
+        transform: translateX(-50%);
+        padding: 4px 7px;
+        border-radius: 3px;
+        font-size: 13px;
+        font-weight: 300;
+        @include media-max-600 {
+          display: none;
+        }
+      }
+    }
+  }
+}
