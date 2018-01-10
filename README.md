@@ -11,6 +11,9 @@
 1. `$ npm run build` Builds files, placing them in '/dist'.
 2. `$ npm run prod`
 
+# Populating DB locally
+mongoimport --db poppers_db --collection coinmarketcap --drop --file ./coinmarketcap.json
+
 # Deploying to staging
 1. Install heroku-cli tools if you haven't.
 2. Get access to the heroku app (message Don)
