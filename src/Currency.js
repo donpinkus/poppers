@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import * as d3 from "d3";
 import axios from "axios";
 
 export default class Currency extends Component {
@@ -21,8 +22,6 @@ export default class Currency extends Component {
 
   componentDidMount() {
     axios.get("/api/poppers").then(resp => {
-      console.log("resp", resp.data);
-
       this.setState({
         data: resp.data.results
       });
@@ -41,15 +40,12 @@ export default class Currency extends Component {
 
     data.forEach(originalObject => {
       let newObject = {
-        timestamp: new Date(originalObject.last_update * 1000),
-        price: parseInt(originalObject.price_usd)
+        timestamp: new Date(originalObject.last_update * 1000).toJSON(),
+        price: parseInt(originalObject.price_usd, 10)
       };
 
       ourNicerData.push(newObject);
     });
-
-    console.log("API data", data[0]);
-    console.log("Nice data", ourNicerData);
 
     const currency = "LTC";
 
@@ -72,21 +68,18 @@ class James extends Component {
 // For each coin, show its time series
 class Chart extends Component {
   render() {
+    console.log(this.props.data);
+
     const data = this.props.data;
 
     return (
       <LineChart
-        width={600}
+        width={1000}
         height={300}
         data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
-        <XAxis
-          dataKey="timestamp"
-          tickFormatter={function(value) {
-            console.log(value); return value.toJSON();
-          }}
-        />
+        <XAxis dataKey="timestamp" tickCount={2} />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
