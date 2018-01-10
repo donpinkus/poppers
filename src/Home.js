@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import MainCharts from "./MainCharts";
+import Currency from "./Currency";
 import Footer from "./Footer";
 
 class Home extends Component {
@@ -16,7 +16,7 @@ class Home extends Component {
           </h2>
         </div>
 
-        <MainCharts />
+        <Currency />
 
         <Footer />
       </div>
