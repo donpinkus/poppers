@@ -23,18 +23,42 @@ app.get("/api/test", (req, res) => {
   });
 });
 
+// Returns an array
+/*
+{
+  symbol: "BTC",
+  last_updated: 12341234,
+  price_usd: 1234,
+  24h_volume_usd: 1234,
+  market_cap_usd: 1234,
+  rank: 1
+}
+*/
 app.get("/api/poppers", (req, res) => {
   MongoClient.connect(mongoDBURL, (err, client) => {
     if (err) throw err;
+
     console.log("Connected to MongoDB at: ", mongoDBURL);
+
     const db = client.db(mongoDBName);
-    const collection = db.collection("historicalData");
+    const collection = db.collection("coinmarketcap");
 
     collection
-      .find({})
+      .find({ symbol: "LTC" })
       .toArray()
       .then(results => {
-        return res.json({ results: results });
+        const outputData = results.map(d => {
+          return {
+            symbol: d.symbol,
+            last_update: d.last_updated,
+            price_usd: d.price_usd,
+            volume_usd_24h: d["24h_volume_usd"],
+            market_cap_usd: d.market_cap_usd,
+            rank: d.rank
+          };
+        });
+
+        return res.json({ results: outputData });
       });
   });
 });
